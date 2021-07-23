@@ -1,0 +1,25 @@
+play book
+
+entrar  la ruta
+https://github.com/AbimaelLemus/Convert_RGB_HEXA
+
+clic en code
+clic en el icono de copiar
+
+
+
+cargar el proyecto a android
+
+opcion 1
+en caso de no tener proyecto abiertos
+abrir android studio
+get from version control
+pegar la ruta que copiamos anteriormente en clonar
+clic en clone y listo
+
+en caso de tener proyecto abierto
+clic en la pestaña VCS
+clic en get from version control
+pega la ruta de clonacion
+clic en clone y listo
+
