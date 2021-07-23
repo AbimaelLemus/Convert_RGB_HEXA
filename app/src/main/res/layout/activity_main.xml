@@ -73,9 +73,9 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:textStyle="bold"
+            android:hint="@string/hexadecimal"
             android:textSize="30sp"
-            android:hint="@string/hexadecimal" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvDateTime"
@@ -87,5 +87,12 @@
             android:hint="@string/datetime" />
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
 
 </RelativeLayout>

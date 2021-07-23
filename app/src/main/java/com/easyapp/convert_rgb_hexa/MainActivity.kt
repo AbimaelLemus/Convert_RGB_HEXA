@@ -4,8 +4,10 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val TAG = "MainActivity"
+    private var progress: ProgressBar? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.also {
+            progress = findViewById<ProgressBar>(R.id.progress)
             val etValorR = findViewById<EditText>(R.id.etValorR)
             val etValorG = findViewById<EditText>(R.id.etValorG)
             val etValorB = findViewById<EditText>(R.id.etValorB)
@@ -53,19 +57,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun peticion(path: String) {
+        mostrarLoader(true)
         val pet = Volley.newRequestQueue(this)
         val solicitud = StringRequest(Request.Method.GET, path, { response ->
             try {
                 val datos = Gson().fromJson(response, RespuestaConsumo::class.java)
                 val tvDateTime = findViewById<TextView>(R.id.tvDateTime)
                 tvDateTime.text = datos.datetime
-
             } catch (e: Exception) {
                 Log.e(TAG, "peticion: ${e.localizedMessage}")
             }
+            mostrarLoader(false)
 
         }, {
             Log.e(TAG, "peticion: ERROR: ${it.networkResponse}")
+            mostrarLoader(false)
         })
 
         pet.add(solicitud)
@@ -98,5 +104,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun mostrarError(error: String, editText: EditText) {
         editText.error = error
+    }
+
+    private fun mostrarLoader(mostrar: Boolean) {
+        if (mostrar) {
+            progress!!.visibility = View.VISIBLE
+        } else {
+            progress!!.visibility = View.INVISIBLE
+        }
     }
 }
