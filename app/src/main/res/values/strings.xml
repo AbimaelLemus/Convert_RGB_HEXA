@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Convert_RGB_HEXA</string>
+    <string name="convertir">Convertir</string>
+    <string name="bbb">BBB</string>
+    <string name="ggg">GGG</string>
+    <string name="rrr">RRR</string>
+    <string name="hexadecimal">Hexadecimal</string>
+    <string name="datetime">Datetime</string>
+</resources>
