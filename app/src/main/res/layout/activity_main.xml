@@ -34,7 +34,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/rrr"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="3" />
 
             <EditText
                 android:id="@+id/etValorG"
@@ -43,7 +44,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/ggg"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="3" />
 
             <EditText
                 android:id="@+id/etValorB"
@@ -52,7 +54,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/bbb"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="3" />
         </LinearLayout>
 
         <Button
@@ -66,16 +69,37 @@
 
         <!--Salidas-->
 
-        <TextView
-            android:id="@+id/tvHexadecimal"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:hint="@string/hexadecimal"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="20dp"
+            android:weightSum="4">
+
+            <View
+                android:id="@+id/vContenedorIzq"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_margin="10dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvHexadecimal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:hint="@string/hexadecimal"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/vContenedorDer"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_margin="10dp"
+                android:layout_weight="1" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvDateTime"

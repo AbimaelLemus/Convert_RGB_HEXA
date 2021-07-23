@@ -86,6 +86,12 @@ class MainActivity : AppCompatActivity() {
         val tvHexa = findViewById<TextView>(R.id.tvHexadecimal)
         tvHexa.text = hex
 
+        val viewIzq = findViewById<View>(R.id.vContenedorIzq)
+        val viewDer = findViewById<View>(R.id.vContenedorDer)
+
+        viewIzq.setBackgroundColor(Color.parseColor(hex))
+        viewDer.setBackgroundColor(Color.parseColor(hex))
+
         tvHexa.setTextColor(color)
 
     }
