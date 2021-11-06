@@ -72,9 +72,6 @@ se agrego esta descripcion de la prueba y lo realizado en en readme
 violeta = 187 134 252 =BB86FC
 verde = 3 218 197 =03DAC5
 
-
-
-
-
-
-
+************************************************************************************
+Hay que checar lo de binding
+agregar mas opciones de conversion

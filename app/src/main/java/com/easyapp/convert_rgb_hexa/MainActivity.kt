@@ -17,6 +17,7 @@ import com.android.volley.toolbox.Volley
 import com.easyapp.convert_rgb_hexa.Model.RespuestaConsumo
 import com.easyapp.convert_rgb_hexa.databinding.ActivityMainBinding
 import com.google.gson.Gson
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,6 +46,15 @@ class MainActivity : AppCompatActivity() {
                 val validacionG = validaciones(g, etValorG)
                 val validacionB = validaciones(b, etValorB)
 
+                val etValidacion = findViewById<EditText>(R.id.etValidacion)
+                val cadena = etValidacion.text.toString().trim()
+
+                if (!cadena.isEmpty()) {
+                    Log.w(TAG, "onCreate: ${validar(cadena)}")
+                }else{
+                    mostrarError("Ingresar cadena", etValidacion)
+                }
+
                 if (validacionR && validacionG && validacionB) {
                     realizarConversion(r, g, b)
                     peticion("https://worldtimeapi.org/api/timezone/America/Mexico_City")
@@ -52,8 +62,31 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+    }
 
-
+    fun validar(str: String): Boolean {
+        if (str.isEmpty()) return true
+        val stack: Stack<Char> = Stack<Char>()
+        for (i in 0..str.length-1) {
+            val current = str[i]
+            if (current == '{' || current == '(' || current == '[') {
+                stack.push(current)//push agrega
+            }
+            if (current == '}' || current == ')' || current == ']') {
+                if (stack.isEmpty()) return false
+                val last: Char = stack.peek()
+                Log.d(TAG, "validar: $current/$last")
+                if (current == '}' //&& last == '{'
+                    || current == ')'// && last == '('
+                    || current == ']'// && last == '['
+                ) {
+                    stack.pop()//pop elimina
+                } else {
+                    return false
+                }
+            }
+        }
+        return stack.isEmpty()
     }
 
     private fun peticion(path: String) {
